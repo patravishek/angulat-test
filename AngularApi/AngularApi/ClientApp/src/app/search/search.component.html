@@ -1,0 +1,64 @@
+<h1>Search By Post Code</h1>
+
+<table class=" table table-striped">
+  <thead>
+    <tr>
+      <th>Post Code</th>
+      <th>Country Code</th>
+    </tr>
+    <tr>
+      <td><input type="text" id="postcode" name="postcode" [(ngModel)]="postcodeVal"/></td>
+      <td><input type="text" name="countrycode" value="{{countryCode}}" readonly/></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="float: left">
+        <input type="button" value="Search" (click)="SearchByPostCode(postcodeVal)"/>
+      </td>
+    </tr>
+  </thead>
+</table>
+
+
+<p *ngIf="!locationPos && SearchNotClicked"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="locationPos">
+  <thead>
+    <tr>
+      <th>IPAddress</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Postal</th>
+      <th>City</th>
+      <th>Abbr</th>
+      <th>State</th>
+      <th>Abbr</th>
+      <th>County</th>
+      <th>Community</th>
+      <th>Community(A.)</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>TimeZone</th>
+      <th>MetroCode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locationPos">
+      <td>{{ location.IPAddress }}</td>
+      <td>{{ location.CountryCode }}</td>
+      <td>{{ location.CountryName }}</td>
+      <td>{{ location.PostalCode }}</td>
+      <td>{{ location.City }}</td>
+      <td>{{ location.StateAbbr }}</td>
+      <td>{{ location.StateName }}</td>
+      <td>{{ location.CountyProvinceAbbr }}</td>
+      <td>{{ location.CountyProvinceName }}</td>
+      <td>{{ location.Community }}</td>
+      <td>{{ location.CommunityAbbr }}</td>
+      <td>{{ location.Latitude }}</td>
+      <td>{{ location.Longitude }}</td>
+      <td>{{ location.TimeZone }}</td>
+      <td>{{ location.MetroCode }}</td>
+      <td><a href="./search/?countryCode={{country.CountryCode}}">Search Location</a></td>
+    </tr>
+  </tbody>
+</table>

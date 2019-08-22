@@ -1,0 +1,32 @@
+<h1>List of Countries</h1>
+
+<p *ngIf="!countryList"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="countryList">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Country Code</th>
+      <th>Name</th>
+      <th>Nice Name</th>
+      <th>ISO3</th>
+      <th>Num Code</th>
+      <th>Phone Code</th>
+      <th>Culture Info</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countryList">
+      <td>{{ country.ID }}</td>
+      <td>{{ country.CountryCode }}</td>
+      <td>{{ country.Name }}</td>
+      <td>{{ country.NiceName }}</td>
+      <td>{{ country.ISO3 }}</td>
+      <td>{{ country.NumCode }}</td>
+      <td>{{ country.PhoneCode }}</td>
+      <td>{{ country.CultureInfo }}</td>
+      <td><a href="./search/?countryCode={{country.CountryCode}}">Search Location</a></td>
+    </tr>
+  </tbody>
+</table>
